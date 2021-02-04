@@ -61,8 +61,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="225dp"
         android:text="Welcome to the Random Number Generator app. Please input your number range of choice and click 'Generate' to display a random number in between."
+        android:textAlignment="center"
         android:textSize="40sp" />
 </RelativeLayout>
