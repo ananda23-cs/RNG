@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText et_min, et_max;
     Button randomizeNumber;
-    TextView tv_output;
+    TextView tv_output, intro;
 
     Random r;
 
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Output displays random number generated
         tv_output = (TextView) findViewById(R.id.tv_output);
+        intro = (TextView) findViewById(R.id.intro);
 
         //Waits for a button press from the user
         randomizeNumber.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                     max = Integer.parseInt(tempMax);
                     if(max > min) {
                         output = r.nextInt((max - min) + 1) + min;
+                        intro.setText("The number generated is: ");
                         tv_output.setText("" + output);
                     }
                 }
