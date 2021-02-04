@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                     if(max > min) {
                         output = r.nextInt((max - min) + 1) + min;
                         intro.setText("The number generated is: ");
-                        intro.setGravity(Gravity.CENTER);
                         tv_output.setText("" + output);
                     }
                 }
