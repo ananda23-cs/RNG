@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     if(max > min) {
                         output = r.nextInt((max - min) + 1) + min;
                         intro.setText("The number generated is: ");
+                        intro.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                         tv_output.setText("" + output);
                     }
                 }
