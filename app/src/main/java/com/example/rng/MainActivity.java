@@ -61,7 +61,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("generation", intro.getText().toString());
+        outState.putString("random", tv_output.getText().toString());
         super.onSaveInstanceState(outState);
     }
 
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        intro.setText(savedInstanceState.getString("generation"));
+        tv_output.setText(savedInstanceState.getString("random"));
+    }
 }
