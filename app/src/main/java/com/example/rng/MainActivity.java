@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -16,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText et_min, et_max;
     Button randomizeNumber;
-    TextView tv_output, intro;
+    TextView message;
 
     Random r;
 
@@ -37,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
         randomizeNumber = (Button) findViewById(R.id.randomizeNumber);
 
         //Output displays random number generated
-        tv_output = (TextView) findViewById(R.id.tv_output);
-        intro = (TextView) findViewById(R.id.intro);
+        message = (TextView) findViewById(R.id.message);
 
         //Waits for a button press from the user
         randomizeNumber.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +52,12 @@ public class MainActivity extends AppCompatActivity {
                     max = Integer.parseInt(tempMax);
                     if(max > min) {
                         output = r.nextInt((max - min) + 1) + min;
-                        intro.setText("The number generated is: ");
-                        tv_output.setText("" + output);
+                        message.setText("The number generated is: " + output);
+                        message.setGravity(Gravity.CENTER);
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this,"Range invalid. Try again",
+                                                            Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -61,15 +66,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putString("generation", intro.getText().toString());
-        outState.putString("random", tv_output.getText().toString());
+        outState.putString("generation", message.getText().toString());
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        intro.setText(savedInstanceState.getString("generation"));
-        tv_output.setText(savedInstanceState.getString("random"));
+        message.setText(savedInstanceState.getString("generation"));
     }
 }
